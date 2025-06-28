@@ -1,0 +1,55 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/[Uu]ser[Ss]ettings/
+
+# Asset meta files
+*.pidb
+*.unityproj
+*.suo
+*.sln
+*.user
+*.userprefs
+*.csproj
+*.booproj
+*.bak
+
+# Unity3D generated meta files
+*.asset.meta
+*.unity.meta
+*.prefab.meta
+*.mat.meta
+*.anim.meta
+*.controller.meta
+*.overrideController.meta
+*.spriteatlas.meta
+*.flare.meta
+*.fontsettings.meta
+*.mask.meta
+*.playable.meta
+*.physicMaterial.meta
+*.physicsMaterial2D.meta
+*.renderTexture.meta
+*.guiskin.meta
+*.asmdef.meta
+*.asmref.meta
+
+# Unity3D Generated files
+Assets/AssetStoreTools*
+Assets/StreamingAssets/aa.meta
+Assets/StreamingAssets/aa/*
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Windows
+Thumbs.db
+Desktop.ini 

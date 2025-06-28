@@ -1,0 +1,43 @@
+{
+  "ros": {
+    "ip": "127.0.0.1",
+    "port": 10000,
+    "connection_timeout": 5.0,
+    "reconnect_interval": 1.0
+  },
+  "controls": {
+    "max_linear_speed": 1.0,
+    "max_angular_speed": 1.0,
+    "deadzone": 0.1,
+    "haptic_intensity": 0.5,
+    "publish_rate": 20.0,
+    "emergency_stop_enabled": true,
+    "emergency_stop_threshold": 0.8
+  },
+  "ui": {
+    "recording_colors": {
+      "recording": [1.0, 0.0, 0.0, 1.0],
+      "paused": [1.0, 1.0, 0.0, 1.0],
+      "stopped": [0.0, 1.0, 0.0, 1.0]
+    },
+    "button_layout": "horizontal",
+    "show_status_indicator": true,
+    "show_connection_status": true
+  },
+  "safety": {
+    "enable_haptic_feedback": true,
+    "enable_emergency_stop": true,
+    "enable_connection_monitoring": true,
+    "battery_warning_threshold": 0.2
+  },
+  "performance": {
+    "target_fps": 90,
+    "reduce_quality_on_low_battery": true,
+    "optimize_for_quest_3": true
+  },
+  "debug": {
+    "enable_logging": true,
+    "log_level": "info",
+    "show_debug_ui": false
+  }
+} 

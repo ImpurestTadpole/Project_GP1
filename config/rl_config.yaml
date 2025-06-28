@@ -1,0 +1,103 @@
+# HIL-SERL (Human-in-the-Loop Sample-Efficient Reinforcement Learning) Configuration
+# Configuration for SO-101 Dual-Arm VR Teleoperation System
+
+# Training Parameters
+training:
+  max_episodes: 1000
+  episode_length: 1000
+  batch_size: 256
+  learning_rate: 3e-4
+  gamma: 0.99
+  tau: 0.005
+  
+# Buffer Sizes
+buffers:
+  demo_buffer_size: 10000
+  rl_buffer_size: 100000
+  preference_buffer_size: 5000
+  
+# Reward Classifier
+reward_classifier:
+  hidden_dim: 256
+  learning_rate: 3e-4
+  epochs_per_update: 10
+  update_frequency: 100
+  preference_threshold: 0.5
+  
+# RL Algorithm (SAC - Soft Actor-Critic)
+rl_algorithm:
+  name: "SAC"
+  policy_update_freq: 1
+  target_update_freq: 2
+  alpha: 0.2  # Entropy regularization
+  automatic_entropy_tuning: true
+  
+# Human Intervention
+intervention:
+  threshold: 0.5
+  max_intervention_time: 30.0  # seconds
+  intervention_decay: 0.95
+  preference_weight: 1.0
+  
+# Environment
+environment:
+  observation_dim: 64  # Image features + joint states
+  action_dim: 14       # 7 DOF per arm
+  max_episode_steps: 1000
+  reward_scale: 1.0
+  
+# Logging and Monitoring
+logging:
+  use_wandb: true
+  project_name: "so101_hil_serl"
+  log_frequency: 10
+  save_frequency: 100
+  checkpoint_dir: "~/checkpoints/hil_serl"
+  
+# Data Collection
+data_collection:
+  demonstration_episodes: 50
+  min_demo_length: 100
+  max_demo_length: 1000
+  demo_quality_threshold: 0.7
+  
+# Network Architecture
+networks:
+  policy:
+    hidden_layers: [256, 256]
+    activation: "relu"
+    output_activation: "tanh"
+  
+  critic:
+    hidden_layers: [256, 256]
+    activation: "relu"
+  
+  reward_classifier:
+    hidden_layers: [256, 256]
+    activation: "relu"
+    output_activation: "sigmoid"
+
+# Hardware Settings
+hardware:
+  use_gpu: true
+  device: "cuda"
+  num_workers: 4
+  
+# VR Controller Mapping
+vr_controller:
+  intervention_button: 0    # A button
+  preference_good: 1        # B button  
+  preference_bad: 2         # X button
+  deadzone: 0.1
+  sensitivity: 1.0
+  
+# ROS Topics
+ros_topics:
+  camera_image: "/camera/color/image_raw"
+  joint_states: "/joint_states"
+  cmd_pose: "/so101_teleop/cmd_pose"
+  vr_controller: "/vr/controller/joy"
+  intervention: "/hil_serl/intervention"
+  preference: "/hil_serl/preference"
+  reward: "/hil_serl/reward"
+  training_status: "/hil_serl/training_active" 

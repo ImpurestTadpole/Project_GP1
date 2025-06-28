@@ -1,0 +1,43 @@
+# SO-101 VR Teleoperation System – Python Dependencies
+
+# Core scientific stack
+numpy>=1.24
+pandas>=1.5
+pyyaml>=6.0
+
+# Media processing
+opencv-python>=4.8
+imageio>=2.31
+pillow>=9.4
+
+# Data serialization / storage
+pyarrow>=14.0
+
+# Visualization & logging
+rerun-sdk>=0.11.0
+
+# Machine Learning (training, inference)
+torch>=2.2
+stable-baselines3>=1.8
+gymnasium>=0.29
+transformers>=4.41
+datasets>=2.18
+accelerate>=0.29
+wandb>=0.16
+tensorboard>=2.15
+
+# HIL-SERL specific dependencies
+# Note: These may need to be installed from source
+# agentlace  # Install from: pip install git+https://github.com/youliangtan/agentlace.git
+# jaxrl      # Install from: pip install git+https://github.com/ikostrikov/jaxrl.git
+
+# Misc utilities
+scipy>=1.11
+huggingface_hub>=0.23
+
+# Multi-platform teleoperation
+pygame>=2.5
+inputs==0.5         # Gamepad / joystick fallback on some platforms
+
+mediapipe>=0.10     # Hand-/body-tracking input
+SpeechRecognition>=3.10  # Voice command input 

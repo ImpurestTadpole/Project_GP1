@@ -1,0 +1,233 @@
+# SO-101 Real Hardware Parameters
+# Real robot configuration and calibration values
+
+real_hardware:
+  # Robot configuration
+  robot:
+    model: "so101_dual_arm"
+    serial_number: "SO101-001"
+    firmware_version: "2.1.0"
+    
+    # Arm configurations
+    arms:
+      left:
+        controller: "left_arm_controller"
+        gripper: "left_gripper_controller"
+        joint_names:
+          - "left_shoulder_pitch"
+          - "left_shoulder_roll"
+          - "left_shoulder_yaw"
+          - "left_elbow_pitch"
+          - "left_elbow_roll"
+          - "left_wrist_pitch"
+          - "left_wrist_roll"
+          - "left_wrist_yaw"
+        joint_limits:
+          position:
+            min: [-3.14, -3.14, -3.14, -3.14, -3.14, -3.14, -3.14, -3.14]
+            max: [3.14, 3.14, 3.14, 3.14, 3.14, 3.14, 3.14, 3.14]
+          velocity:
+            max: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+          effort:
+            max: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+            
+      right:
+        controller: "right_arm_controller"
+        gripper: "right_gripper_controller"
+        joint_names:
+          - "right_shoulder_pitch"
+          - "right_shoulder_roll"
+          - "right_shoulder_yaw"
+          - "right_elbow_pitch"
+          - "right_elbow_roll"
+          - "right_wrist_pitch"
+          - "right_wrist_roll"
+          - "right_wrist_yaw"
+        joint_limits:
+          position:
+            min: [-3.14, -3.14, -3.14, -3.14, -3.14, -3.14, -3.14, -3.14]
+            max: [3.14, 3.14, 3.14, 3.14, 3.14, 3.14, 3.14, 3.14]
+          velocity:
+            max: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+          effort:
+            max: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+
+  # Hardware calibration
+  calibration:
+    # Joint offsets (radians)
+    joint_offsets:
+      left_arm: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      right_arm: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      
+    # Tool center point (TCP) offsets (meters)
+    tcp_offsets:
+      left_arm: [0.0, 0.0, 0.1]  # x, y, z
+      right_arm: [0.0, 0.0, 0.1]  # x, y, z
+      
+    # Base frame transformation
+    base_transform:
+      position: [0.0, 0.0, 0.0]  # x, y, z
+      orientation: [0.0, 0.0, 0.0]  # roll, pitch, yaw
+      
+    # Camera calibration
+    cameras:
+      left:
+        intrinsic_matrix: [640.0, 0.0, 320.0, 0.0, 640.0, 240.0, 0.0, 0.0, 1.0]
+        distortion_coeffs: [0.0, 0.0, 0.0, 0.0, 0.0]
+        extrinsic_matrix: [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+      right:
+        intrinsic_matrix: [640.0, 0.0, 320.0, 0.0, 640.0, 240.0, 0.0, 0.0, 1.0]
+        distortion_coeffs: [0.0, 0.0, 0.0, 0.0, 0.0]
+        extrinsic_matrix: [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+
+  # Safety settings
+  safety:
+    # Emergency stop
+    emergency_stop:
+      enabled: true
+      timeout: 0.1  # seconds
+      recovery_time: 5.0  # seconds
+      
+    # Joint limits
+    joint_limits:
+      soft_limits: true
+      hard_limits: true
+      margin: 0.1  # radians
+      
+    # Velocity limits
+    velocity_limits:
+      max_velocity: 0.5  # m/s
+      max_acceleration: 2.0  # m/s²
+      max_jerk: 10.0  # m/s³
+      
+    # Force limits
+    force_limits:
+      max_force: 100.0  # N
+      max_torque: 50.0  # Nm
+      
+    # Collision detection
+    collision_detection:
+      enabled: true
+      threshold: 50.0  # N
+      safety_margin: 0.05  # meters
+      
+    # Workspace limits
+    workspace_limits:
+      position:
+        x: [-0.8, 0.8]
+        y: [-0.6, 0.6]
+        z: [0.2, 1.2]
+      orientation:
+        roll: [-3.14, 3.14]
+        pitch: [-3.14, 3.14]
+        yaw: [-3.14, 3.14]
+
+  # Controller settings
+  controllers:
+    # PID gains
+    pid_gains:
+      position:
+        p: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+        i: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        d: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+      velocity:
+        p: [50.0, 50.0, 50.0, 50.0, 50.0, 50.0]
+        i: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+        d: [5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+        
+    # Control modes
+    control_modes:
+      position: true
+      velocity: true
+      effort: false
+      trajectory: true
+      
+    # Update rates
+    update_rates:
+      joint_states: 100  # Hz
+      commands: 100  # Hz
+      safety: 1000  # Hz
+
+  # Communication settings
+  communication:
+    # Network settings
+    network:
+      ip_address: "192.168.1.100"
+      port: 5000
+      timeout: 5.0  # seconds
+      
+    # Protocol settings
+    protocol:
+      type: "tcp"
+      buffer_size: 1024
+      retry_attempts: 3
+      
+    # Data rates
+    data_rates:
+      joint_states: 100  # Hz
+      commands: 100  # Hz
+      status: 10  # Hz
+
+  # Gripper settings
+  gripper:
+    # Hardware limits
+    limits:
+      position:
+        min: 0.0  # meters
+        max: 0.08  # meters
+      force:
+        min: 0.0  # N
+        max: 50.0  # N
+        
+    # Control parameters
+    control:
+      position_tolerance: 0.001  # meters
+      force_tolerance: 1.0  # N
+      max_velocity: 0.1  # m/s
+      max_acceleration: 1.0  # m/s²
+      
+    # Calibration
+    calibration:
+      open_position: 0.08  # meters
+      closed_position: 0.0  # meters
+      max_force: 50.0  # N
+
+  # Sensor settings
+  sensors:
+    # Force/torque sensors
+    force_torque:
+      enabled: true
+      update_rate: 100  # Hz
+      calibration_matrix: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+      
+    # Joint encoders
+    encoders:
+      resolution: 4096  # counts per revolution
+      update_rate: 1000  # Hz
+      
+    # Temperature sensors
+    temperature:
+      enabled: true
+      update_rate: 1  # Hz
+      warning_threshold: 60.0  # °C
+      critical_threshold: 80.0  # °C
+
+  # Maintenance settings
+  maintenance:
+    # Calibration schedule
+    calibration_schedule:
+      daily: false
+      weekly: true
+      monthly: true
+      
+    # Health monitoring
+    health_monitoring:
+      enabled: true
+      check_interval: 60  # seconds
+      
+    # Logging
+    logging:
+      enabled: true
+      level: "info"  # debug, info, warning, error
+      max_file_size: "100MB"
+      max_files: 10 

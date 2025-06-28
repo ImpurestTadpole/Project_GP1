@@ -1,0 +1,99 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    left_arm_controller:
+      type: position_controllers/JointGroupPositionController
+      joints:
+        - left_shoulder_pitch
+        - left_shoulder_roll
+        - left_elbow_pitch
+        - left_wrist_pitch
+
+    right_arm_controller:
+      type: position_controllers/JointGroupPositionController
+      joints:
+        - right_shoulder_pitch
+        - right_shoulder_roll
+        - right_elbow_pitch
+        - right_wrist_pitch
+
+    left_gripper_controller:
+      type: position_controllers/GripperActionController
+      joints:
+        - left_gripper
+      goal_tolerance: 0.01
+      max_effort: 50.0
+
+    right_gripper_controller:
+      type: position_controllers/GripperActionController
+      joints:
+        - right_gripper
+      goal_tolerance: 0.01
+      max_effort: 50.0
+
+    # Cartesian controllers for VR teleoperation
+    left_cartesian_controller:
+      type: cartesian_controllers/CartesianController
+      end_effector_link: left_wrist_link
+      base_link: base_link
+      joints:
+        - left_shoulder_pitch
+        - left_shoulder_roll
+        - left_elbow_pitch
+        - left_wrist_pitch
+
+    right_cartesian_controller:
+      type: cartesian_controllers/CartesianController
+      end_effector_link: right_wrist_link
+      base_link: base_link
+      joints:
+        - right_shoulder_pitch
+        - right_shoulder_roll
+        - right_elbow_pitch
+        - right_wrist_pitch
+
+# Hardware interface configuration
+hardware_interface:
+  ros__parameters:
+    joint_names:
+      - left_shoulder_pitch
+      - left_shoulder_roll
+      - left_elbow_pitch
+      - left_wrist_pitch
+      - left_gripper
+      - right_shoulder_pitch
+      - right_shoulder_roll
+      - right_elbow_pitch
+      - right_wrist_pitch
+      - right_gripper
+
+# PID gains for position controllers
+left_arm_controller:
+  ros__parameters:
+    gains:
+      left_shoulder_pitch: {p: 100.0, i: 1.0, d: 10.0}
+      left_shoulder_roll: {p: 100.0, i: 1.0, d: 10.0}
+      left_elbow_pitch: {p: 100.0, i: 1.0, d: 10.0}
+      left_wrist_pitch: {p: 50.0, i: 0.5, d: 5.0}
+
+right_arm_controller:
+  ros__parameters:
+    gains:
+      right_shoulder_pitch: {p: 100.0, i: 1.0, d: 10.0}
+      right_shoulder_roll: {p: 100.0, i: 1.0, d: 10.0}
+      right_elbow_pitch: {p: 100.0, i: 1.0, d: 10.0}
+      right_wrist_pitch: {p: 50.0, i: 0.5, d: 5.0}
+
+left_gripper_controller:
+  ros__parameters:
+    gains:
+      left_gripper: {p: 50.0, i: 0.1, d: 1.0}
+
+right_gripper_controller:
+  ros__parameters:
+    gains:
+      right_gripper: {p: 50.0, i: 0.1, d: 1.0} 

@@ -1,0 +1,13 @@
+robot_config:
+  type: "universal_robots"
+  model: "ur5"
+  dof: 6
+  control_interface: "ros2_control"
+  driver_package: "ur_robot_driver"
+  joint_limits:
+    - [-360, 360]  # Base
+    - [-180, 180]  # Shoulder
+    - [-180, 180]  # Elbow
+    - [-360, 360]  # Wrist1
+    - [-360, 360]  # Wrist2
+    - [-360, 360]  # Wrist3 

@@ -1,0 +1,173 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ROS
+build/
+devel/
+install/
+log/
+.catkin_workspace
+*.bag
+*.bag.active
+
+# ROS 2
+install/
+build/
+log/
+
+# Data and models
+data/
+models/
+checkpoints/
+logs/
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.ckpt
+*.model
+
+# Gazebo
+.gazebo/
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Uu]ser[Ss]ettings/
+
+# Unity Asset Store Tools
+/[Aa]ssets/AssetStoreTools*
+
+# Visual Studio cache/options directory
+.vs/
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup directories
+backup_*/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Log files
+*.log
+
+# Configuration files with sensitive data
+*_secret.yaml
+*_secret.json
+*.key
+*.pem
+
+# CUDA cache
+.nv/
+
+# Weights & Biases
+wandb/
+
+# TensorBoard logs
+runs/
+tb_logs/
+
+# Rerun logs
+*.rrd
+
+# Documentation builds
+docs/_build/
+docs/build/
+
+# Camera calibration files
+*.yaml.backup
+calibration_*.yaml
+
+# Episode data
+episodes/
+raw_episodes/
+
+# Training outputs
+training_outputs/
+policy_outputs/ 

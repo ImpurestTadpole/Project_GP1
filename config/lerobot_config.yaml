@@ -1,0 +1,56 @@
+# @package _global_
+# Default configuration for training a policy with LeRobot.
+# This configuration is meant to be a starting point and can be overridden from the command line.
+
+defaults:
+  - _self_
+  - override /env: pusht  # Example environment, change as needed
+  - override /policy: diffusion_pusht # Example policy
+
+# Hydra configuration for logging and output directories
+hydra:
+  run:
+    dir: ${hydra.sweep.dir}/${hydra.sweep.subdir}
+  sweep:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+
+# Environment specific configurations
+env:
+  name: pusht-v0
+  # For a ROS/Gazebo environment, you would use a different type
+  # and specify connection details here.
+  # For example:
+  # type: 'ros'
+  # host: 'localhost'
+  # port: 11311
+
+# Policy specific configurations
+policy:
+  # The pretrained_model_path can be a local path or a Hugging Face Hub repo ID.
+  pretrained_model_path: null
+  # Override specific policy hyperparameters
+  num_inference_steps: 10
+  
+# Training loop configurations
+train:
+  # Path to the directory containing the LeRobot dataset episodes.
+  # This should match the output of the convert_to_lerobot.py script.
+  data_dir: "~/data/lerobot_episodes"
+  batch_size: 64
+  learning_rate: 1e-4
+  num_train_steps: 50000
+  num_epochs: 100
+  # Frequency of saving checkpoints
+  save_freq: 1000
+  # Use Weights and Biases for logging
+  wandb:
+    enable: false
+    project: "so101_lerobot_training"
+    entity: null # Your wandb entity
+
+eval:
+  # Frequency of running evaluation
+  eval_freq: 500
+  n_episodes: 20
+  batch_size: 10 

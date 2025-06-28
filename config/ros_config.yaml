@@ -1,0 +1,65 @@
+# ROS Configuration for LeRobot VR Teleoperation
+
+ros:
+  # Network settings
+  ip: "127.0.0.1"
+  port: 10000
+  
+  # Topic configuration
+  topics:
+    cmd_vel: "/cmd_vel"
+    rec_ctrl: "/rec_ctrl"
+    camera_front: "/camera/front/image_raw"
+    camera_depth: "/camera/depth/image_raw"
+    joint_states: "/joint_states"
+    tf: "/tf"
+    tf_static: "/tf_static"
+  
+  # QoS settings
+  qos:
+    reliability: "reliable"
+    durability: "volatile"
+    history: "keep_last"
+    depth: 10
+  
+  # Recording settings
+  recording:
+    topics:
+      - "/cmd_vel"
+      - "/camera/front/image_raw"
+      - "/camera/depth/image_raw"
+      - "/joint_states"
+      - "/tf"
+      - "/tf_static"
+    compression: "zstd"
+    max_size: "1GB"
+    max_duration: "3600"  # 1 hour
+
+# Unity settings
+unity:
+  ros_ip: "127.0.0.1"
+  ros_port: 10000
+  connection_timeout: 5.0
+  reconnect_interval: 1.0
+
+# Control settings
+control:
+  max_linear_speed: 1.0
+  max_angular_speed: 1.0
+  deadzone: 0.1
+  haptic_intensity: 0.5
+  publish_rate: 20.0  # Hz
+  emergency_stop_enabled: true
+
+# Data processing
+data_processing:
+  output_format: "parquet"
+  compression: "snappy"
+  batch_size: 1000
+  max_workers: 4
+
+# HuggingFace settings
+huggingface:
+  token_env_var: "HUGGINGFACE_TOKEN"
+  default_repo_prefix: "lerobot-vr-data"
+  upload_chunk_size: "100MB" 

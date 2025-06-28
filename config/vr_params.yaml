@@ -1,0 +1,176 @@
+# SO-101 VR Teleoperation Parameters
+# VR control configuration for dual-arm manipulation
+
+vr_teleoperation:
+  # General VR settings
+  general:
+    enabled: true
+    mode: "sim"  # "sim" or "real"
+    update_rate: 100  # Hz
+    timeout: 5.0  # seconds
+    
+  # Controller configuration
+  controllers:
+    left:
+      hand_topic: "/vr/left_hand"
+      gripper_topic: "/vr/left_gripper"
+      arm_target: "/arm_commands/left"
+      gripper_target: "/gripper_commands/left"
+      
+    right:
+      hand_topic: "/vr/right_hand"
+      gripper_topic: "/vr/right_gripper"
+      arm_target: "/arm_commands/right"
+      gripper_target: "/gripper_commands/right"
+      
+  # Pose scaling and transformation
+  pose_scaling:
+    position:
+      scale: [1.0, 1.0, 1.0]  # x, y, z scaling
+      offset: [0.0, 0.0, 0.0]  # x, y, z offset
+      
+    orientation:
+      scale: [1.0, 1.0, 1.0]  # roll, pitch, yaw scaling
+      offset: [0.0, 0.0, 0.0]  # roll, pitch, yaw offset
+      
+  # Workspace limits (in meters)
+  workspace_limits:
+    position:
+      x: [-0.8, 0.8]
+      y: [-0.6, 0.6]
+      z: [0.2, 1.2]
+      
+    orientation:
+      roll: [-3.14, 3.14]
+      pitch: [-3.14, 3.14]
+      yaw: [-3.14, 3.14]
+      
+  # Filtering and smoothing
+  filtering:
+    position:
+      low_pass_cutoff: 10.0  # Hz
+      smoothing_factor: 0.8
+      
+    orientation:
+      low_pass_cutoff: 8.0  # Hz
+      smoothing_factor: 0.7
+      
+    velocity:
+      low_pass_cutoff: 15.0  # Hz
+      smoothing_factor: 0.6
+      
+  # Deadzone settings
+  deadzone:
+    position: 0.01  # meters
+    orientation: 0.05  # radians
+    gripper: 0.1  # normalized (0-1)
+    
+  # Safety settings
+  safety:
+    max_velocity: 0.5  # m/s
+    max_acceleration: 2.0  # m/s²
+    max_jerk: 10.0  # m/s³
+    
+    # Collision avoidance
+    collision_detection: true
+    safety_margin: 0.05  # meters
+    emergency_stop_threshold: 0.02  # meters
+    
+  # Gripper control
+  gripper:
+    # Trigger mapping
+    trigger_threshold: 0.5
+    open_position: 0.0
+    closed_position: 1.0
+    
+    # Speed control
+    open_speed: 0.1  # m/s
+    close_speed: 0.15  # m/s
+    
+    # Force limits
+    max_force: 50.0  # N
+    
+  # Haptic feedback
+  haptic_feedback:
+    enabled: true
+    
+    # Force feedback based on distance to target
+    position_error:
+      gain: 0.5
+      max_force: 2.0  # N
+      
+    # Force feedback based on gripper force
+    gripper_force:
+      gain: 0.3
+      max_force: 1.5  # N
+      
+    # Collision feedback
+    collision:
+      gain: 1.0
+      max_force: 3.0  # N
+      duration: 0.1  # seconds
+      
+  # UI and visualization
+  ui:
+    # Status indicators
+    show_connection_status: true
+    show_workspace_limits: true
+    show_target_pose: true
+    show_current_pose: true
+    
+    # Color scheme
+    colors:
+      connected: [0.0, 1.0, 0.0]  # Green
+      disconnected: [1.0, 0.0, 0.0]  # Red
+      warning: [1.0, 1.0, 0.0]  # Yellow
+      workspace: [0.0, 0.0, 1.0, 0.3]  # Blue with transparency
+      
+  # Recording settings
+  recording:
+    enabled: true
+    topics:
+      - "/vr/left_hand"
+      - "/vr/right_hand"
+      - "/vr/left_gripper"
+      - "/vr/right_gripper"
+      - "/arm_commands/left"
+      - "/arm_commands/right"
+      - "/gripper_commands/left"
+      - "/gripper_commands/right"
+      - "/joint_states"
+      - "/tf"
+      
+    # Recording control
+    start_key: "r"
+    stop_key: "s"
+    pause_key: "p"
+    
+  # Calibration
+  calibration:
+    # Manual calibration offsets
+    manual_offsets:
+      left_arm:
+        position: [0.0, 0.0, 0.0]
+        orientation: [0.0, 0.0, 0.0]
+      right_arm:
+        position: [0.0, 0.0, 0.0]
+        orientation: [0.0, 0.0, 0.0]
+        
+    # Auto-calibration
+    auto_calibration:
+      enabled: false
+      calibration_poses: 5
+      tolerance: 0.01  # meters
+      
+  # Performance settings
+  performance:
+    # Threading
+    num_threads: 2
+    
+    # Memory management
+    buffer_size: 1000
+    max_latency: 0.1  # seconds
+    
+    # GPU acceleration (if available)
+    use_gpu: false
+    gpu_device: "auto" 
