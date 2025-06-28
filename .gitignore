@@ -1,10 +1,110 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.env/
+
+# ROS
+ros_ws/build/
+ros_ws/install/
+ros_ws/log/
+ros_ws/.catkin_workspace
+ros_ws/.catkin_tools/
+ros_ws/devel/
+*.bag
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+.vs/
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.apk
+*.aab
+*.unitypackage
+crashlytics-build.properties
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+data/
+logs/
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+*.h5
+*.pkl
+*.npy
+*.npz
+*.zip
+*.tar.gz
+*.rar
+
+# Temporary and backup files
+*.bak
+*.tmp
+*.temp
+*~
+*.orig
+
+# Debug files
+*.log
+*.debug
+core.*
 
 # Distribution / packaging
 .Python
@@ -51,24 +151,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Virtual environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# ROS
-build/
-devel/
-install/
-log/
-.catkin_workspace
-*.bag
-*.bag.active
-
 # ROS 2
 install/
 build/
@@ -90,16 +172,6 @@ logs/
 
 # Gazebo
 .gazebo/
-
-# Unity
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Mm]emoryCaptures/
-[Uu]ser[Ss]ettings/
 
 # Unity Asset Store Tools
 /[Aa]ssets/AssetStoreTools*
