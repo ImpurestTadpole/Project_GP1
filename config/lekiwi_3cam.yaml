@@ -1,0 +1,128 @@
+# RealSense Camera Configuration for LeKiWi Dual-Arm Setup
+
+# Global settings for all cameras
+global:
+  enable_depth: true
+  enable_color: true
+  align_depth: true
+  fps: 30
+  point_cloud: true
+  
+  # Image quality settings
+  color:
+    width: 1280
+    height: 720
+    format: "rgb8"
+  depth:
+    width: 848
+    height: 480
+    format: "z16"
+
+# Individual camera configurations
+cameras:
+  workspace_cam:
+    serial_no: "123456789"  # Replace with actual serial
+    name: "workspace"
+    enabled: true
+    
+    # Camera-specific settings
+    color:
+      exposure: 100
+      gain: 16
+      white_balance: 4500
+    depth:
+      laser_power: 360
+      accuracy: "high"
+      filter:
+        spatial: true
+        temporal: true
+        decimation: 2
+    
+    # Transform from robot base
+    transform:
+      translation: [0.0, 0.0, 1.5]
+      rotation: [0.0, 1.57, 0.0]  # Looking down at workspace
+      frame_id: "robot_base"
+      
+  left_cam:
+    serial_no: "987654321"  # Replace with actual serial
+    name: "left_hand"
+    enabled: true
+    
+    # Camera-specific settings
+    color:
+      exposure: 100
+      gain: 16
+      white_balance: 4500
+    depth:
+      laser_power: 360
+      accuracy: "high"
+      filter:
+        spatial: true
+        temporal: true
+        decimation: 2
+    
+    # Transform from robot base
+    transform:
+      translation: [-0.3, 0.0, 0.8]
+      rotation: [0.0, 0.79, 0.0]  # Angled view of workspace
+      frame_id: "robot_base"
+      
+  right_cam:
+    serial_no: "456789123"  # Replace with actual serial
+    name: "right_hand"
+    enabled: true
+    
+    # Camera-specific settings
+    color:
+      exposure: 100
+      gain: 16
+      white_balance: 4500
+    depth:
+      laser_power: 360
+      accuracy: "high"
+      filter:
+        spatial: true
+        temporal: true
+        decimation: 2
+    
+    # Transform from robot base
+    transform:
+      translation: [0.3, 0.0, 0.8]
+      rotation: [0.0, -0.79, 0.0]  # Angled view of workspace
+      frame_id: "robot_base"
+
+# Processing pipeline
+pipeline:
+  # Background removal
+  background_removal:
+    enabled: true
+    min_depth: 0.1
+    max_depth: 2.0
+    
+  # Point cloud filtering
+  pointcloud:
+    voxel_size: 0.01
+    outlier_removal: true
+    
+  # Object detection
+  detection:
+    enabled: true
+    model: "yolov5"
+    confidence: 0.5
+    classes: ["shirt", "box"]
+    
+  # Recording settings
+  recording:
+    compression: "lz4"
+    synchronization: true
+    max_latency: 0.1
+
+# Visualization
+visualization:
+  rviz:
+    point_size: 3
+    color_scheme: "rainbow"
+  rerun:
+    enabled: true
+    log_level: "info" 

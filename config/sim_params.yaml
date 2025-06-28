@@ -2,7 +2,19 @@
 # Domain randomization and simulation configuration
 
 simulation:
-  # Gazebo simulation settings
+  # Simulation backend selection
+  backend: "isaac_sim"  # Options: "gazebo", "isaac_sim"
+  
+  # Isaac Sim settings
+  isaac_sim:
+    physics_engine: "physx"
+    physics_dt: 0.01666  # 60 Hz
+    rendering_dt: 0.01666
+    substeps: 1
+    use_gpu_pipeline: true
+    device: "cuda:0"
+    
+  # Gazebo simulation settings (legacy)
   gazebo:
     physics_engine: "ode"
     max_step_size: 0.001
@@ -155,7 +167,8 @@ performance:
   # GPU acceleration
   gpu:
     enabled: true
-    device: "auto"  # or specific device like "cuda:0"
+    device: "cuda:0"  # or specific device
+    precision: "float32"
     
   # Multi-threading
   threading:
@@ -165,4 +178,12 @@ performance:
   # Memory management
   memory:
     max_memory_usage: "8GB"
-    garbage_collection: true 
+    garbage_collection: true
+    
+  # Isaac Sim specific
+  isaac:
+    use_gpu_physics: true
+    use_gpu_rendering: true
+    enable_raytracing: false  # Enable for better visuals, disable for performance
+    viewport_resolution: [1280, 720]
+    enable_debug_visualization: false 

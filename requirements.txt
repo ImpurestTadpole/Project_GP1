@@ -1,12 +1,45 @@
 # SO-101 VR Teleoperation System – Python Dependencies
 
-# Core scientific stack
-numpy>=1.24
-pandas>=1.5
-pyyaml>=6.0
+# Core dependencies
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.4.0
+PyYAML>=5.4.1
+rospkg>=1.3.0
+
+# Robot control and simulation
+transforms3d>=0.3.1
+pyrealsense2>=2.50.0
+opencv-python>=4.5.0
+omegaconf>=2.1.0
+isaacgym>=1.0.0  # Requires NVIDIA Isaac Sim installation
+omni-isaac-sim>=2023.1.0  # Requires NVIDIA Isaac Sim installation
+
+# Deep learning and RL
+torch>=1.10.0
+torchvision>=0.11.0
+stable-baselines3>=2.0.0
+gymnasium>=0.28.1
+wandb>=0.12.0  # For experiment tracking
+
+# ROS 2 dependencies (installed via rosdep)
+# ros-humble-*
+
+# Unity dependencies
+unity-robotics-hub>=0.4.0
+unity-cv>=0.4.0
+
+# Visualization and debugging
+rerun-sdk>=0.8.0
+tensorboard>=2.8.0
+
+# Development tools
+black>=22.3.0
+isort>=5.10.1
+pylint>=2.12.0
+pytest>=7.0.0
 
 # Media processing
-opencv-python>=4.8
 imageio>=2.31
 pillow>=9.4
 
@@ -14,25 +47,11 @@ pillow>=9.4
 pyarrow>=14.0
 
 # Visualization & logging
-rerun-sdk>=0.11.0
-
-# Machine Learning (training, inference)
-torch>=2.2
-stable-baselines3>=1.8
-gymnasium>=0.29
 transformers>=4.41
 datasets>=2.18
 accelerate>=0.29
-wandb>=0.16
-tensorboard>=2.15
-
-# HIL-SERL specific dependencies
-# Note: These may need to be installed from source
-# agentlace  # Install from: pip install git+https://github.com/youliangtan/agentlace.git
-# jaxrl      # Install from: pip install git+https://github.com/ikostrikov/jaxrl.git
 
 # Misc utilities
-scipy>=1.11
 huggingface_hub>=0.23
 
 # Multi-platform teleoperation
